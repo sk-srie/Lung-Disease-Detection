@@ -7,6 +7,7 @@ from torchvision import transforms
 from PIL import Image
 import streamlit as st
 
+
 # Step 1: Recreate the same model architecture
 model = models.resnet50(pretrained=False)
 model.fc = nn.Sequential(
@@ -16,7 +17,7 @@ model.fc = nn.Sequential(
     nn.Linear(256, 5)
 )
 # Step 2: Load the weights
-state_dict = torch.load("../modals/best_modal.pth", map_location=torch.device('cpu'))
+state_dict = torch.load("../modals/best_model.pth", map_location=torch.device('cpu'))
 model.load_state_dict(state_dict)
 
 # Step 3: Set model to eval
@@ -49,7 +50,6 @@ if uploaded_file is not None:
 
             st.success(f"Predicted Class: **{pred_class}**")
 
-            import pandas as pd
 
             confidence = probs[np.argmax(probs)]
             st.subheader("Prediction Confidence")
