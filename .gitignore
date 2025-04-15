@@ -1,0 +1,6 @@
+.venv
+.idea
+kaggle.json
+data
+notebooks/model_resnet18.ipynb
+modals/best_modal.pth
